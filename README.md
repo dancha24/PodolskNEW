@@ -6,10 +6,10 @@
 
 ```bash
 docker build -t pidilsknew .
-docker run --rm -p 64848:80 -v "$PWD:/usr/share/nginx/html" pidilsknew
+docker run --rm -p 5978:80 -v "$PWD:/usr/share/nginx/html" pidilsknew
 ```
 
-Открыть: http://localhost:64848
+Открыть: http://localhost:5978
 
 ## Страницы
 
