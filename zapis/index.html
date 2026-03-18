@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Предварительная запись в миграционный центр Подольска — запись онлайн</title>
+    <meta
+      name="description"
+      content="Предварительная запись на подготовку документов: РВП, ВНЖ, гражданство, квота на РВП. Оставьте заявку — мы перезвоним."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="header" id="top">
+      <div class="container header__top">
+        <a class="logo" href="../" aria-label="На главную">
+          <span class="logo__mark">МЦ</span>
+          <span class="logo__text">Миграционный центр</span>
+        </a>
+        <p class="header__address">г. Подольск, ул. Профсоюзная, 4</p>
+        <p class="header__worktime">Пн-Пт 9:00-18:00</p>
+        <a class="header__phone" href="tel:+74950000000">+7 (495) 000-00-00</a>
+        <a class="btn btn--primary header__cta" href="./">Записаться</a>
+        <button class="header__menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav">
+          <span aria-hidden="true">☰</span>
+          <span class="visually-hidden">Открыть меню</span>
+        </button>
+      </div>
+      <div class="container header__bottom">
+        <nav class="nav" aria-label="Основная навигация">
+          <a href="../">Главная</a>
+          <a href="../#services">Услуги</a>
+          <a href="../#prices">Цены</a>
+          <a href="../#faq">FAQ</a>
+          <a href="../contacts/">Контакты</a>
+          <a href="./">Предварительная запись</a>
+        </nav>
+      </div>
+      <div class="mobile-nav" id="mobile-nav">
+        <nav class="mobile-nav__inner" aria-label="Мобильная навигация">
+          <a href="../">Главная</a>
+          <a href="../#services">Услуги</a>
+          <a href="../#prices">Цены</a>
+          <a href="../#faq">FAQ</a>
+          <a href="../contacts/">Контакты</a>
+          <a href="./">Предварительная запись</a>
+          <p class="mobile-nav__address">г. Подольск, ул. Профсоюзная, 4</p>
+        </nav>
+      </div>
+      <div class="mobile-sticky-cta">
+        <a href="tel:+74950000000">Позвонить</a>
+        <a href="./">Записаться</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container reveal">
+          <h1>Предварительная запись на подготовку документов</h1>
+          <p>Заполните форму — мы перезвоним и назначим удобное время.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container contact-layout">
+          <article class="contact-form-card reveal">
+            <h2 class="section__title">Форма записи</h2>
+            <form class="js-lead-form" novalidate>
+              <label class="field">
+                <span class="field__label--hidden">Имя</span>
+                <input name="name" type="text" placeholder="Ваше имя" required />
+                <small class="field__error" aria-live="polite"></small>
+              </label>
+
+              <label class="field">
+                <span class="field__label--hidden">Телефон</span>
+                <input name="phone" type="tel" placeholder="+7 (___) ___-__-__" required />
+                <small class="field__error" aria-live="polite"></small>
+              </label>
+
+              <label class="field">
+                <span>Тип услуги</span>
+                <select name="service" required>
+                  <option value="">Выберите услугу</option>
+                  <option value="rvp">РВП</option>
+                  <option value="vnzh">ВНЖ</option>
+                  <option value="citizenship">Гражданство</option>
+                  <option value="quota">Квота на РВП</option>
+                  <option value="other">Другое</option>
+                </select>
+                <small class="field__error" aria-live="polite"></small>
+              </label>
+
+              <label class="field">
+                <span>Комментарий (необязательно)</span>
+                <textarea name="comment" placeholder="Опишите вашу ситуацию"></textarea>
+                <small class="field__error" aria-live="polite"></small>
+              </label>
+
+              <div class="checkbox-field">
+                <input id="consent" name="consent" type="checkbox" required />
+                <label for="consent">
+                  Я согласен(а) на обработку персональных данных.
+                </label>
+                <small class="field__error" aria-live="polite"></small>
+              </div>
+
+              <button class="btn btn--primary" type="submit">Записаться</button>
+              <p class="lead-form__success" role="status" hidden>Спасибо! Мы перезвоним в течение 15 минут.</p>
+            </form>
+          </article>
+
+          <div class="reveal">
+            <article class="contact-route">
+              <h2 class="section__title">Что взять с собой на первый приём</h2>
+              <ul class="checklist">
+                <li>Паспорт и нотариальный перевод (если требуется).</li>
+                <li>Миграционная карта и регистрация по месту пребывания.</li>
+                <li>Документы по основанию подачи (брак, работа, дети и др.).</li>
+                <li>Справки и квитанции, если уже есть на руках.</li>
+                <li>Список вопросов, чтобы ничего не упустить на консультации.</li>
+              </ul>
+            </article>
+
+            <article class="contact-info" style="margin-top: 16px;">
+              <h2 class="section__title">Адрес и режим работы</h2>
+              <p><strong>Адрес:</strong> г. Подольск, ул. Профсоюзная, д. 4</p>
+              <p><strong>Телефон:</strong> <a href="tel:+74950000000">+7 (495) 000-00-00</a></p>
+              <p><strong>Режим работы:</strong> Пн-Пт 9:00-18:00</p>
+              <a class="btn btn--secondary" href="https://yandex.ru/maps" target="_blank" rel="noopener">Построить маршрут</a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <p class="footer__brand">Миграционный центр в Подольске</p>
+          <p>+7 (495) 000-00-00</p>
+          <p>г. Подольск, ул. Профсоюзная, 4</p>
+          <p>Пн-Пт: 9:00-18:00</p>
+        </div>
+        <div>
+          <p class="footer__title">Навигация</p>
+          <a href="../">Главная</a>
+          <a href="../#services">Услуги</a>
+          <a href="../#prices">Цены</a>
+          <a href="../#faq">FAQ</a>
+          <a href="../contacts/">Контакты</a>
+        </div>
+        <div>
+          <p class="footer__title">Документы</p>
+          <a href="../privacy/">Политика конфиденциальности</a>
+          <a href="./">Запись на консультацию</a>
+        </div>
+      </div>
+      <div class="container footer__copy">© 2026 Миграционный центр в Подольске</div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

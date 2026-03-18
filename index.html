@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Миграционный центр в Подольске — помощь с РВП, ВНЖ и гражданством</title>
+    <meta
+      name="description"
+      content="Помогаем иностранным гражданам оформить РВП, ВНЖ и гражданство РФ в Подольске. Бесплатная консультация и сопровождение до результата."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="header" id="top">
+      <div class="container header__top">
+        <a class="logo" href="#top" aria-label="На главную">
+          <span class="logo__mark">МЦ</span>
+          <span class="logo__text">Миграционный центр</span>
+        </a>
+        <p class="header__address">г. Подольск, ул. Профсоюзная, 4</p>
+        <p class="header__worktime">Пн-Пт 9:00-18:00</p>
+        <a class="header__phone" href="tel:+74950000000">+7 (495) 000-00-00</a>
+        <a class="btn btn--primary header__cta" href="#lead-form">Записаться</a>
+        <button class="header__menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav">
+          <span aria-hidden="true">☰</span>
+          <span class="visually-hidden">Открыть меню</span>
+        </button>
+      </div>
+      <div class="container header__bottom">
+        <nav class="nav" aria-label="Основная навигация">
+          <a href="#services">Услуги</a>
+          <a href="#prices">Цены</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contacts">Как нас найти</a>
+          <a href="./contacts/">Страница контактов</a>
+          <a href="./zapis/">Предварительная запись</a>
+        </nav>
+      </div>
+      <div class="mobile-nav" id="mobile-nav">
+        <nav class="mobile-nav__inner" aria-label="Мобильная навигация">
+          <a href="#services">Услуги</a>
+          <a href="#prices">Цены</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contacts">Как нас найти</a>
+          <a href="./contacts/">Страница контактов</a>
+          <a href="./zapis/">Предварительная запись</a>
+          <p class="mobile-nav__address">г. Подольск, ул. Профсоюзная, 4</p>
+        </nav>
+      </div>
+      <div class="mobile-sticky-cta">
+        <a href="tel:+74950000000">Позвонить</a>
+        <a href="#lead-form">Записаться</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section">
+        <div class="hero__overlay"></div>
+        <div class="container hero__content">
+          <div class="hero__text reveal">
+            <h1>Миграционный центр в Подольске</h1>
+            <p>
+              Помогаем иностранным гражданам подготовить и подать документы на РВП, ВНЖ и гражданство РФ.
+              Всё в одном месте — на ул. Профсоюзная, 4.
+            </p>
+          </div>
+          <form class="lead-form js-lead-form reveal" id="lead-form" novalidate>
+            <h2 class="lead-form__title">Запишитесь на консультацию</h2>
+            <label class="field">
+              <span>Имя</span>
+              <input name="name" type="text" placeholder="Ваше имя" required />
+              <small class="field__error" aria-live="polite"></small>
+            </label>
+            <label class="field">
+              <span>Телефон</span>
+              <input name="phone" type="tel" placeholder="+7 (___) ___-__-__" required />
+              <small class="field__error" aria-live="polite"></small>
+            </label>
+            <button class="btn btn--primary btn--full" type="submit">Записаться на консультацию</button>
+            <p class="lead-form__hint">Перезвоним в течение 15 минут в рабочее время</p>
+            <p class="lead-form__success" role="status" hidden>
+              Спасибо! Мы перезвоним в течение 15 минут.
+            </p>
+          </form>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="container">
+          <h2 class="section__title reveal">Наши услуги</h2>
+          <p class="section__subtitle reveal">
+            Помогаем на каждом этапе — от первой консультации до получения документов.
+          </p>
+          <div class="services-grid">
+            <article class="card reveal">
+              <img class="card__photo" src="./images/service-rvp.jpg" alt="Документы для оформления РВП" loading="lazy" />
+              <h3>РВП</h3>
+              <p>Подготовка документов, проверка пакета и сопровождение на подачу.</p>
+            </article>
+            <article class="card reveal">
+              <img class="card__photo" src="./images/service-vnzh.jpg" alt="Консультация по оформлению ВНЖ" loading="lazy" />
+              <h3>ВНЖ</h3>
+              <p>Оформление вида на жительство без ошибок и лишних визитов.</p>
+            </article>
+            <article class="card reveal">
+              <img class="card__photo" src="./images/service-citizenship.jpg" alt="Подготовка документов на гражданство РФ" loading="lazy" />
+              <h3>Гражданство РФ</h3>
+              <p>Сопровождение до результата с учетом вашей конкретной ситуации.</p>
+            </article>
+          </div>
+          <p class="services-extra reveal">Также: квота на РВП • перевод документов • консультации</p>
+          <button class="btn btn--secondary reveal js-open-consultation-modal" type="button">
+            Записаться на бесплатную консультацию
+          </button>
+        </div>
+      </section>
+
+      <section class="section section--alt">
+        <div class="container">
+          <h2 class="section__title reveal">Как проходит оформление документов</h2>
+          <div class="timeline">
+            <article class="timeline__item reveal reveal-step">
+              <span>01</span>
+              <h3>Вы записываетесь</h3>
+              <p>Оставляете заявку на сайте или звоните нам.</p>
+            </article>
+            <article class="timeline__item reveal reveal-step">
+              <span>02</span>
+              <h3>Бесплатная консультация</h3>
+              <p>Специалист уточняет задачу и список документов.</p>
+            </article>
+            <article class="timeline__item reveal reveal-step">
+              <span>03</span>
+              <h3>Подготовка документов</h3>
+              <p>Проверяем каждую справку и заявление перед подачей.</p>
+            </article>
+            <article class="timeline__item reveal reveal-step">
+              <span>04</span>
+              <h3>Подача в ФМС</h3>
+              <p>Подсказываем порядок действий и сопровождаем на этапах.</p>
+            </article>
+            <article class="timeline__item reveal reveal-step">
+              <span>05</span>
+              <h3>Результат</h3>
+              <p>Получаете документы и дальнейшие рекомендации по срокам.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section__title reveal">Почему обращаются к нам</h2>
+          <div class="reasons-grid">
+            <article class="reason reveal"><h3>Всё в одном месте</h3><p>Консультация, проверка и оформление в одном офисе.</p></article>
+            <article class="reason reveal"><h3>Проверяем каждый документ</h3><p>Снижаем риск отказов из-за формальных ошибок.</p></article>
+            <article class="reason reveal"><h3>Удобное расположение</h3><p>Подольск, ул. Профсоюзная, 4 — легко добраться.</p></article>
+            <article class="reason reveal"><h3>Экономим ваше время</h3><p>Понятный алгоритм и быстрый старт без лишних шагов.</p></article>
+            <article class="reason reveal"><h3>Понятные цены</h3><p>Озвучиваем стоимость заранее, без скрытых платежей.</p></article>
+            <article class="reason reveal"><h3>Сопровождение до результата</h3><p>Остаёмся на связи до получения документов.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="prices">
+        <div class="container">
+          <h2 class="section__title reveal">Стоимость услуг</h2>
+          <p class="section__subtitle reveal">Точную стоимость для вашей ситуации назовём на бесплатной консультации.</p>
+          <div class="prices reveal">
+            <div class="prices__group">
+              <h3>Комплексная подготовка</h3>
+              <div class="price-row"><span>Полный пакет документов</span><strong>от 25 000 ₽</strong></div>
+              <div class="price-row"><span>Консультация</span><strong>2 000 ₽</strong></div>
+            </div>
+            <div class="prices__group">
+              <h3>Заполнение заявлений</h3>
+              <div class="price-row"><span>Квота на РВП</span><strong>4 000 ₽</strong></div>
+              <div class="price-row"><span>РВП</span><strong>5 000 ₽</strong></div>
+              <div class="price-row"><span>ВНЖ</span><strong>6 000 ₽</strong></div>
+              <div class="price-row"><span>Гражданство</span><strong>8 000 ₽</strong></div>
+              <div class="price-row"><span>Исправление документов</span><strong>от 3 000 ₽</strong></div>
+            </div>
+            <div class="prices__group">
+              <h3>Дополнительные услуги</h3>
+              <div class="price-row"><span>Нотариальный перевод</span><strong>от 600 ₽</strong></div>
+              <div class="price-row"><span>Фото</span><strong>500 ₽</strong></div>
+              <div class="price-row"><span>Копия (1 стр.)</span><strong>30 ₽</strong></div>
+            </div>
+          </div>
+          <p class="reveal">Не нашли свою услугу? <a href="tel:+74950000000">Позвоните нам</a> или <a href="#lead-form">запишитесь на консультацию</a>.</p>
+        </div>
+      </section>
+
+      <section class="section cta">
+        <div class="container cta__inner reveal">
+          <div>
+            <h2>Не знаете с чего начать?</h2>
+            <p>Запишитесь на бесплатную консультацию — специалист разберёт вашу ситуацию.</p>
+          </div>
+          <form class="cta__form js-lead-form" novalidate>
+            <label class="visually-hidden" for="cta-phone">Телефон</label>
+            <input id="cta-phone" name="phone" type="tel" placeholder="Ваш телефон" required />
+            <small class="field__error" aria-live="polite"></small>
+            <button class="btn btn--light" type="submit">Перезвоните мне</button>
+            <p class="lead-form__success" role="status" hidden>
+              Спасибо! Мы перезвоним в течение 15 минут.
+            </p>
+          </form>
+        </div>
+      </section>
+
+      <section class="section section--alt">
+        <div class="container">
+          <h2 class="section__title reveal">Полезные онлайн-сервисы для иностранных граждан</h2>
+          <div class="services-links">
+            <a class="service-link reveal" target="_blank" rel="noopener" href="https://гувм.мвд.рф/services/rvp">
+              <span class="service-link__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Готовность РВП</span>
+            </a>
+            <a class="service-link reveal" target="_blank" rel="noopener" href="https://гувм.мвд.рф/services/vnzh">
+              <span class="service-link__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Готовность ВНЖ</span>
+            </a>
+            <a class="service-link reveal" target="_blank" rel="noopener" href="https://services.fms.gov.ru/info-service.htm?sid=3000">
+              <span class="service-link__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Проверка запрета въезда</span>
+            </a>
+            <a class="service-link reveal" target="_blank" rel="noopener" href="https://mc.mos.ru">
+              <span class="service-link__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Патент</span>
+            </a>
+            <a class="service-link reveal" target="_blank" rel="noopener" href="https://service.nalog.ru/inn.do">
+              <span class="service-link__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>ИНН</span>
+            </a>
+            <a class="service-link reveal" target="_blank" rel="noopener" href="https://fssp.gov.ru/iss/ip">
+              <span class="service-link__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>ФССП</span>
+            </a>
+            <a class="service-link reveal" target="_blank" rel="noopener" href="https://mc.mos.ru/sakharovo">
+              <span class="service-link__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Сахарово</span>
+            </a>
+            <a class="service-link reveal" target="_blank" rel="noopener" href="https://www.gosuslugi.ru">
+              <span class="service-link__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Госуслуги</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="container faq">
+          <h2 class="section__title reveal">Ответы на часто задаваемые вопросы</h2>
+          <div class="accordion reveal">
+            <details>
+              <summary>Какие документы нужны для оформления РВП в Подольске?</summary>
+              <p>Точный список зависит от основания. На консультации дадим персональный чек-лист и сроки.</p>
+            </details>
+            <details>
+              <summary>Как записаться на приём в миграционный центр на Профсоюзной?</summary>
+              <p>Оставьте заявку на сайте или позвоните нам. Подберём ближайшее удобное время.</p>
+            </details>
+            <details>
+              <summary>Сколько стоит подготовка документов на ВНЖ?</summary>
+              <p>Стоимость зависит от сложности вашего дела. На бесплатной консультации назовём точную цену.</p>
+            </details>
+            <details>
+              <summary>Как проверить готовность документов на РВП и ВНЖ?</summary>
+              <p>Используйте официальные онлайн-сервисы в блоке выше или обратитесь к нам за проверкой.</p>
+            </details>
+            <details>
+              <summary>Какие районы обслуживает миграционный центр в Подольске?</summary>
+              <p>Работаем с клиентами из Подольского, Ленинского и Домодедовского районов Московской области.</p>
+            </details>
+            <details>
+              <summary>Нужно ли повторно проходить медосмотр при оформлении ВНЖ, если есть РВП?</summary>
+              <p>Зависит от срока действия ранее полученных документов. Проверим вашу ситуацию индивидуально.</p>
+            </details>
+            <details>
+              <summary>На какой срок выдаётся вид на жительство?</summary>
+              <p>ВНЖ в большинстве случаев бессрочный, но отдельные категории имеют дополнительные условия.</p>
+            </details>
+            <details>
+              <summary>Как получить квоту на РВП?</summary>
+              <p>Нужно подготовить пакет документов и подать заявление в установленные сроки. Поможем оформить всё правильно.</p>
+            </details>
+            <details>
+              <summary>Какой максимальный срок пребывания иностранного гражданина в РФ?</summary>
+              <p>Срок зависит от основания пребывания. На консультации объясним правила именно для вашей категории.</p>
+            </details>
+            <details>
+              <summary>Сколько времени занимает оформление документов?</summary>
+              <p>Сроки отличаются по типу услуги. После проверки документов даём понятный план с этапами и датами.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contacts">
+        <div class="container contacts">
+          <div class="contacts__info reveal">
+            <h2 class="section__title">Как нас найти</h2>
+            <p><strong>Адрес:</strong> г. Подольск, ул. Профсоюзная, д. 4</p>
+            <p><strong>Телефон:</strong> <a href="tel:+74950000000">+7 (495) 000-00-00</a></p>
+            <p><strong>Режим работы:</strong> Пн-Пт 9:00-18:00</p>
+            <p>
+              Удобно добраться на общественном транспорте и на машине. Рядом есть парковка.
+            </p>
+            <a
+              class="btn btn--secondary"
+              href="https://yandex.ru/maps"
+              target="_blank"
+              rel="noopener"
+            >
+              Построить маршрут
+            </a>
+          </div>
+          <div class="contacts__map reveal">
+            <iframe
+              title="Яндекс Карты"
+              src="https://yandex.ru/map-widget/v1/?um=constructor%3A4a8f347799f9f8c2e5de82c8fb8f8f38a1b7f8dcbce8a1274f66e3f6e3b7f8b7&source=constructor"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <p class="footer__brand">Миграционный центр в Подольске</p>
+          <p>+7 (495) 000-00-00</p>
+          <p>г. Подольск, ул. Профсоюзная, 4</p>
+          <p>Пн-Пт: 9:00-18:00</p>
+        </div>
+        <div>
+          <p class="footer__title">Навигация</p>
+          <a href="#services">Услуги</a>
+          <a href="#prices">Цены</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contacts">Контакты</a>
+          <a href="./zapis/">Предв. запись</a>
+        </div>
+        <div>
+          <p class="footer__title">Документы</p>
+          <a href="./privacy/">Политика конфиденциальности</a>
+          <a href="#lead-form">Запись на консультацию</a>
+        </div>
+      </div>
+      <div class="container footer__copy">© 2026 Миграционный центр в Подольске</div>
+    </footer>
+
+    <div class="modal" id="consultation-modal" hidden>
+      <div class="modal__backdrop" data-modal-close></div>
+      <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="consultation-modal-title">
+        <button class="modal__close" type="button" aria-label="Закрыть форму" data-modal-close>
+          ×
+        </button>
+        <form class="lead-form modal__form js-lead-form" novalidate>
+          <h2 class="lead-form__title" id="consultation-modal-title">Запишитесь на консультацию</h2>
+          <label class="field">
+            <span>Имя</span>
+            <input name="name" type="text" placeholder="Ваше имя" required />
+            <small class="field__error" aria-live="polite"></small>
+          </label>
+          <label class="field">
+            <span>Телефон</span>
+            <input name="phone" type="tel" placeholder="+7 (___) ___-__-__" required />
+            <small class="field__error" aria-live="polite"></small>
+          </label>
+          <button class="btn btn--primary btn--full" type="submit">Записаться на консультацию</button>
+          <p class="lead-form__hint">Перезвоним в течение 15 минут в рабочее время</p>
+          <p class="lead-form__success" role="status" hidden>
+            Спасибо! Мы перезвоним в течение 15 минут.
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

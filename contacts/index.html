@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Контакты миграционного центра в Подольске — адрес, телефон, как добраться</title>
+    <meta
+      name="description"
+      content="Контакты миграционного центра в Подольске: адрес, телефон, режим работы, карта и форма обратной связи."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="header" id="top">
+      <div class="container header__top">
+        <a class="logo" href="../" aria-label="На главную">
+          <span class="logo__mark">МЦ</span>
+          <span class="logo__text">Миграционный центр</span>
+        </a>
+        <p class="header__address">г. Подольск, ул. Профсоюзная, 4</p>
+        <p class="header__worktime">Пн-Пт 9:00-18:00</p>
+        <a class="header__phone" href="tel:+74950000000">+7 (495) 000-00-00</a>
+        <a class="btn btn--primary header__cta" href="../zapis/">Записаться</a>
+        <button class="header__menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav">
+          <span aria-hidden="true">☰</span>
+          <span class="visually-hidden">Открыть меню</span>
+        </button>
+      </div>
+      <div class="container header__bottom">
+        <nav class="nav" aria-label="Основная навигация">
+          <a href="../">Главная</a>
+          <a href="../#services">Услуги</a>
+          <a href="../#prices">Цены</a>
+          <a href="../#faq">FAQ</a>
+          <a href="./">Контакты</a>
+          <a href="../zapis/">Предварительная запись</a>
+        </nav>
+      </div>
+      <div class="mobile-nav" id="mobile-nav">
+        <nav class="mobile-nav__inner" aria-label="Мобильная навигация">
+          <a href="../">Главная</a>
+          <a href="../#services">Услуги</a>
+          <a href="../#prices">Цены</a>
+          <a href="../#faq">FAQ</a>
+          <a href="./">Контакты</a>
+          <a href="../zapis/">Предварительная запись</a>
+          <p class="mobile-nav__address">г. Подольск, ул. Профсоюзная, 4</p>
+        </nav>
+      </div>
+      <div class="mobile-sticky-cta">
+        <a href="tel:+74950000000">Позвонить</a>
+        <a href="../zapis/">Записаться</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container reveal">
+          <h1>Контакты</h1>
+          <p>Мы находимся в Подольске. Ниже — адрес, телефон, карта и подробная информация, как до нас добраться.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container contact-layout">
+          <div class="contact-info reveal">
+            <h2 class="section__title">Как нас найти</h2>
+            <p><strong>Адрес:</strong> г. Подольск, ул. Профсоюзная, д. 4</p>
+            <p><strong>Телефон:</strong> <a href="tel:+74950000000">+7 (495) 000-00-00</a></p>
+            <p><strong>Email:</strong> <a href="mailto:info@migra-pro.local">info@migra-pro.local</a></p>
+            <p><strong>Режим работы:</strong> Пн-Пт 9:00-18:00</p>
+            <a class="btn btn--secondary" href="https://yandex.ru/maps" target="_blank" rel="noopener">Построить маршрут</a>
+          </div>
+
+          <div class="contacts__map reveal">
+            <iframe
+              title="Яндекс Карта"
+              src="https://yandex.ru/map-widget/v1/?um=constructor%3A4a8f347799f9f8c2e5de82c8fb8f8f38a1b7f8dcbce8a1274f66e3f6e3b7f8b7&source=constructor"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt">
+        <div class="container contact-layout">
+          <article class="contact-route reveal">
+            <h2 class="section__title">Как добраться</h2>
+            <p><strong>На общественном транспорте:</strong> выйдите на остановке рядом с ул. Профсоюзная и пройдите 3-5 минут пешком.</p>
+            <p><strong>На машине:</strong> введите адрес в навигатор. Рядом есть места для парковки.</p>
+            <p><strong>Ориентир:</strong> вход с фасада, вывеска «Миграционный центр».</p>
+          </article>
+
+          <div class="office-photos reveal">
+            <div class="office-photo">Фото фасада офиса</div>
+            <div class="office-photo">Фото входа в офис</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <article class="contact-form-card reveal">
+            <h2 class="section__title">Форма обратной связи</h2>
+            <form class="js-lead-form" novalidate>
+              <label class="field">
+                <span>Имя</span>
+                <input name="name" type="text" placeholder="Ваше имя" required />
+                <small class="field__error" aria-live="polite"></small>
+              </label>
+              <label class="field">
+                <span>Телефон</span>
+                <input name="phone" type="tel" placeholder="+7 (___) ___-__-__" required />
+                <small class="field__error" aria-live="polite"></small>
+              </label>
+              <label class="field">
+                <span>Сообщение</span>
+                <textarea name="message" placeholder="Опишите ваш вопрос"></textarea>
+                <small class="field__error" aria-live="polite"></small>
+              </label>
+              <button class="btn btn--primary" type="submit">Отправить</button>
+              <p class="lead-form__success" role="status" hidden>Спасибо! Мы свяжемся с вами в рабочее время.</p>
+            </form>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <p class="footer__brand">Миграционный центр в Подольске</p>
+          <p>+7 (495) 000-00-00</p>
+          <p>г. Подольск, ул. Профсоюзная, 4</p>
+          <p>Пн-Пт: 9:00-18:00</p>
+        </div>
+        <div>
+          <p class="footer__title">Навигация</p>
+          <a href="../">Главная</a>
+          <a href="../#services">Услуги</a>
+          <a href="../#prices">Цены</a>
+          <a href="../#faq">FAQ</a>
+          <a href="../zapis/">Предв. запись</a>
+        </div>
+        <div>
+          <p class="footer__title">Документы</p>
+          <a href="../privacy/">Политика конфиденциальности</a>
+          <a href="../zapis/">Запись на консультацию</a>
+        </div>
+      </div>
+      <div class="container footer__copy">© 2026 Миграционный центр в Подольске</div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>
