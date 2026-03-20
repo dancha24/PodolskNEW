@@ -75,6 +75,7 @@ iframe {
   border-radius: 8px;
   border: 1px solid transparent;
   text-decoration: none;
+  font-family: inherit;
   font-weight: 600;
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
@@ -253,19 +254,25 @@ iframe {
   border-top: 1px solid #dce3eb;
 }
 
-.mobile-sticky-cta a {
+.mobile-sticky-cta > a,
+.mobile-sticky-cta > button {
   display: grid;
   place-items: center;
   min-height: 52px;
+  margin: 0;
+  border: none;
   text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
   font-weight: 600;
+  cursor: pointer;
 }
 
-.mobile-sticky-cta a:first-child {
+.mobile-sticky-cta > a:first-child {
   color: var(--primary);
 }
 
-.mobile-sticky-cta a:last-child {
+.mobile-sticky-cta > button:last-child {
   background: var(--accent);
   color: #fff;
 }
@@ -332,7 +339,7 @@ body.modal-open {
     linear-gradient(110deg, rgba(27, 58, 92, 0.96), rgba(27, 58, 92, 0.8)),
     radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.12), transparent 40%),
     radial-gradient(circle at 80% 20%, rgba(231, 76, 60, 0.2), transparent 35%),
-    url("./images/hero-bg.jpg") center center / cover no-repeat;
+    url("./images/hero-bg-2-generated.png") center center / cover no-repeat;
   background-color: #1b3a5c;
 }
 
@@ -745,6 +752,48 @@ body.modal-open {
   margin: 0;
   color: #dde8f2;
   max-width: 70ch;
+}
+
+.legal-doc {
+  max-width: 75ch;
+}
+
+.legal-doc__meta {
+  margin: 0 0 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.legal-doc h2 {
+  margin: 1.75rem 0 0.65rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.legal-doc h2:first-of-type {
+  margin-top: 0;
+}
+
+.legal-doc p {
+  margin: 0 0 0.85rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.legal-doc ul {
+  margin: 0 0 0.85rem;
+  padding-left: 1.35rem;
+  line-height: 1.55;
+  color: var(--text-primary);
+}
+
+.legal-doc li {
+  margin-bottom: 0.4rem;
+}
+
+.legal-doc a {
+  color: var(--primary);
 }
 
 .contact-layout {
