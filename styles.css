@@ -148,6 +148,16 @@ iframe {
   font-weight: 700;
 }
 
+.logo__img {
+  display: block;
+  height: 36px;
+  width: auto;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  object-fit: contain;
+}
+
 .logo__mark {
   display: grid;
   place-items: center;
@@ -321,7 +331,9 @@ body.modal-open {
   background:
     linear-gradient(110deg, rgba(27, 58, 92, 0.96), rgba(27, 58, 92, 0.8)),
     radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.12), transparent 40%),
-    radial-gradient(circle at 80% 20%, rgba(231, 76, 60, 0.2), transparent 35%);
+    radial-gradient(circle at 80% 20%, rgba(231, 76, 60, 0.2), transparent 35%),
+    url("./images/hero-bg.jpg") center center / cover no-repeat;
+  background-color: #1b3a5c;
 }
 
 .hero__overlay {
@@ -747,6 +759,10 @@ body.modal-open {
   border-radius: 12px;
   padding: 18px;
   background: #fff;
+}
+
+.contact-info--stack {
+  margin-top: 16px;
 }
 
 .contact-info p,

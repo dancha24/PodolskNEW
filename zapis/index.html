@@ -1,31 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Предварительная запись в миграционный центр Подольска — запись онлайн</title>
     <meta
       name="description"
       content="Предварительная запись на подготовку документов: РВП, ВНЖ, гражданство, квота на РВП. Оставьте заявку — мы перезвоним."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../styles.css" />
+    >
+    <link rel="stylesheet" href="../styles.css">
   </head>
   <body>
     <header class="header" id="top">
       <div class="container header__top">
         <a class="logo" href="../" aria-label="На главную">
-          <span class="logo__mark">МЦ</span>
-          <span class="logo__text">Миграционный центр</span>
+          <img class="logo__img" src="../images/logo.png" alt="Миграционный центр">
         </a>
         <p class="header__address">г. Подольск, ул. Профсоюзная, 4</p>
         <p class="header__worktime">Пн-Пт 9:00-18:00</p>
-        <a class="header__phone" href="tel:+74950000000">+7 (495) 000-00-00</a>
+        <a class="header__phone" href="tel:+74950000000">+7&nbsp;(495)&nbsp;000&#8209;00&#8209;00</a>
         <a class="btn btn--primary header__cta" href="./">Записаться</a>
         <button class="header__menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav">
           <span aria-hidden="true">☰</span>
@@ -74,13 +73,13 @@
             <form class="js-lead-form" novalidate>
               <label class="field">
                 <span class="field__label--hidden">Имя</span>
-                <input name="name" type="text" placeholder="Ваше имя" required />
+                <input name="name" type="text" placeholder="Ваше имя" required>
                 <small class="field__error" aria-live="polite"></small>
               </label>
 
               <label class="field">
                 <span class="field__label--hidden">Телефон</span>
-                <input name="phone" type="tel" placeholder="+7 (___) ___-__-__" required />
+                <input name="phone" type="tel" placeholder="+7 (___) ___-__-__" required>
                 <small class="field__error" aria-live="polite"></small>
               </label>
 
@@ -104,7 +103,7 @@
               </label>
 
               <div class="checkbox-field">
-                <input id="consent" name="consent" type="checkbox" required />
+                <input id="consent" name="consent" type="checkbox" required>
                 <label for="consent">
                   Я согласен(а) на обработку персональных данных.
                 </label>
@@ -128,10 +127,10 @@
               </ul>
             </article>
 
-            <article class="contact-info" style="margin-top: 16px;">
+            <article class="contact-info contact-info--stack">
               <h2 class="section__title">Адрес и режим работы</h2>
               <p><strong>Адрес:</strong> г. Подольск, ул. Профсоюзная, д. 4</p>
-              <p><strong>Телефон:</strong> <a href="tel:+74950000000">+7 (495) 000-00-00</a></p>
+              <p><strong>Телефон:</strong> <a href="tel:+74950000000">+7&nbsp;(495)&nbsp;000&#8209;00&#8209;00</a></p>
               <p><strong>Режим работы:</strong> Пн-Пт 9:00-18:00</p>
               <a class="btn btn--secondary" href="https://yandex.ru/maps" target="_blank" rel="noopener">Построить маршрут</a>
             </article>
@@ -144,7 +143,7 @@
       <div class="container footer__grid">
         <div>
           <p class="footer__brand">Миграционный центр в Подольске</p>
-          <p>+7 (495) 000-00-00</p>
+          <p>+7&nbsp;(495)&nbsp;000&#8209;00&#8209;00</p>
           <p>г. Подольск, ул. Профсоюзная, 4</p>
           <p>Пн-Пт: 9:00-18:00</p>
         </div>
@@ -164,6 +163,44 @@
       </div>
       <div class="container footer__copy">© 2026 Миграционный центр в Подольске</div>
     </footer>
+
+    <!-- calltouch -->
+    <script>
+      (function (w, d, n, c) {
+        w.CalltouchDataObject = n;
+        w[n] = function () {
+          w[n]["callbacks"].push(arguments);
+        };
+        if (!w[n]["callbacks"]) {
+          w[n]["callbacks"] = [];
+        }
+        w[n]["loaded"] = false;
+        if (typeof c !== "object") {
+          c = [c];
+        }
+        w[n]["counters"] = c;
+        for (var i = 0; i < c.length; i += 1) {
+          p(c[i]);
+        }
+        function p(cId) {
+          var a = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            i = function () {
+              a.parentNode.insertBefore(s, a);
+            },
+            m = typeof Array.prototype.find === "function",
+            n = m ? "init-min.js" : "init.js";
+          s.async = true;
+          s.src = "https://mod.calltouch.ru/" + n + "?id=" + cId;
+          if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", i, false);
+          } else {
+            i();
+          }
+        }
+      })(window, document, "ct", "g7n9ttjo");
+    </script>
+    <!-- calltouch -->
 
     <script src="../script.js"></script>
   </body>
