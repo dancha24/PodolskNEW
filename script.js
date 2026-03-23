@@ -1,3 +1,9 @@
+document.querySelectorAll('a[href="#top"]').forEach((link) => {
+  link.addEventListener("click", () => {
+    window.scrollTo(0, 0);
+  });
+});
+
 const header = document.querySelector(".header");
 const menuButton = document.querySelector(".header__menu-button");
 const mobileNav = document.querySelector(".mobile-nav");
@@ -44,20 +50,45 @@ document.querySelectorAll(".reveal-step").forEach((item, index) => {
 
 const consultationModal = document.querySelector("#consultation-modal");
 const consultationOpenButtons = document.querySelectorAll(".js-open-consultation-modal");
+const privacyModal = document.querySelector("#privacy-modal");
+const privacyIframe = privacyModal?.querySelector(".privacy-modal__frame");
+
+function syncModalOpenBody() {
+  const hasOpen =
+    (consultationModal && !consultationModal.hidden) ||
+    (privacyModal && !privacyModal.hidden);
+  document.body.classList.toggle("modal-open", Boolean(hasOpen));
+}
+
+function closeConsultationModal() {
+  if (!consultationModal) return;
+  consultationModal.hidden = true;
+  syncModalOpenBody();
+}
+
+function openConsultationModal() {
+  if (!consultationModal) return;
+  consultationModal.hidden = false;
+  syncModalOpenBody();
+  consultationModal.querySelector('input[name="name"]')?.focus();
+}
+
+function closePrivacyModal() {
+  if (!privacyModal) return;
+  privacyModal.hidden = true;
+  if (privacyIframe) privacyIframe.src = "about:blank";
+  syncModalOpenBody();
+}
+
+function openPrivacyModal(url) {
+  if (!privacyModal || !privacyIframe || !url) return;
+  privacyIframe.src = url;
+  privacyModal.hidden = false;
+  syncModalOpenBody();
+}
 
 if (consultationModal && consultationOpenButtons.length) {
   const consultationCloseButtons = consultationModal.querySelectorAll("[data-modal-close]");
-
-  const openConsultationModal = () => {
-    consultationModal.hidden = false;
-    document.body.classList.add("modal-open");
-    consultationModal.querySelector('input[name="name"]')?.focus();
-  };
-
-  const closeConsultationModal = () => {
-    consultationModal.hidden = true;
-    document.body.classList.remove("modal-open");
-  };
 
   consultationOpenButtons.forEach((button) => {
     button.addEventListener("click", openConsultationModal);
@@ -66,13 +97,81 @@ if (consultationModal && consultationOpenButtons.length) {
   consultationCloseButtons.forEach((button) => {
     button.addEventListener("click", closeConsultationModal);
   });
+}
 
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !consultationModal.hidden) {
-      closeConsultationModal();
-    }
+if (privacyModal) {
+  privacyModal.querySelectorAll("[data-privacy-close]").forEach((el) => {
+    el.addEventListener("click", closePrivacyModal);
   });
 }
+
+document.querySelectorAll(".js-open-privacy-modal").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    openPrivacyModal(link.getAttribute("href"));
+  });
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+  if (privacyModal && !privacyModal.hidden) {
+    closePrivacyModal();
+    return;
+  }
+  if (consultationModal && !consultationModal.hidden) {
+    closeConsultationModal();
+  }
+});
+
+/** Нормализация к 11 цифрам с ведущей 7 (РФ: 8→7; без кода страны — добавляем 7). */
+function normalizePhoneDigits(raw) {
+  let d = String(raw).replace(/\D/g, "");
+  if (!d.length) return "";
+  if (d[0] === "8") d = "7" + d.slice(1);
+  if (d[0] !== "7" && d.length <= 10) d = "7" + d;
+  return d.slice(0, 11);
+}
+
+/** Отображение: +7 (XXX) XXX-XX-XX */
+function formatRuPhoneDisplay(normalizedDigits) {
+  const d = normalizePhoneDigits(normalizedDigits);
+  if (!d.length) return "";
+  const rest = d.slice(1);
+  let out = "+7";
+  if (rest.length === 0) return `${out} `;
+  out += ` (${rest.slice(0, 3)}`;
+  if (rest.length <= 3) {
+    return rest.length === 3 ? `${out}) ` : out;
+  }
+  out += `) ${rest.slice(3, 6)}`;
+  if (rest.length <= 6) return out;
+  out += `-${rest.slice(6, 8)}`;
+  if (rest.length <= 8) return out;
+  out += `-${rest.slice(8, 10)}`;
+  return out;
+}
+
+function attachPhoneMask(input) {
+  const apply = () => {
+    const formatted = formatRuPhoneDisplay(input.value);
+    if (input.value !== formatted) {
+      input.value = formatted;
+    }
+  };
+
+  input.addEventListener("input", apply);
+  input.addEventListener("blur", apply);
+  input.addEventListener("paste", (e) => {
+    e.preventDefault();
+    const pasted = e.clipboardData?.getData("text") ?? "";
+    input.value = formatRuPhoneDisplay(pasted);
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+  });
+
+  apply();
+}
+
+document.querySelectorAll('input[name="phone"][type="tel"]').forEach(attachPhoneMask);
 
 const validators = {
   name(value) {
@@ -81,9 +180,9 @@ const validators = {
     return "";
   },
   phone(value) {
-    const digits = value.replace(/\D/g, "");
+    const digits = normalizePhoneDigits(value);
     if (!digits) return "Введите телефон";
-    if (digits.length < 10) return "Укажите корректный телефон";
+    if (digits.length < 11) return "Укажите корректный телефон";
     return "";
   },
   service(value) {
@@ -111,6 +210,12 @@ function setFieldError(input, message) {
   if (input.type === "checkbox") return;
   input.style.borderColor = message ? "#d63031" : "";
 }
+
+document.querySelectorAll('input[name="consent"][type="checkbox"]').forEach((input) => {
+  input.addEventListener("change", () => {
+    if (input.checked) setFieldError(input, "");
+  });
+});
 
 function validateField(input) {
   const value = input.type === "checkbox" ? (input.checked ? "1" : "") : input.value;

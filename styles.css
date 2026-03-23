@@ -281,6 +281,15 @@ body.modal-open {
   overflow: hidden;
 }
 
+/* Якорь #top в начале body: на sticky-header переход по #top часто не скроллит вверх */
+.page-anchor {
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  scroll-margin-top: 0;
+}
+
 .modal {
   position: fixed;
   inset: 0;
@@ -288,6 +297,10 @@ body.modal-open {
   display: grid;
   place-items: center;
   padding: 16px;
+}
+
+.modal--privacy {
+  z-index: 55;
 }
 
 .modal[hidden] {
@@ -304,6 +317,35 @@ body.modal-open {
   position: relative;
   z-index: 1;
   width: min(100%, 460px);
+}
+
+.modal__dialog--legal {
+  width: min(100%, 880px);
+  max-height: min(92vh, 920px);
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.modal__legal-title {
+  margin: 0;
+  padding: 16px 52px 12px 16px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  border-bottom: 1px solid #e8edf2;
+  flex-shrink: 0;
+}
+
+.privacy-modal__frame {
+  width: 100%;
+  flex: 1;
+  min-height: 50vh;
+  border: 0;
+  background: #fff;
 }
 
 .modal__form {
@@ -336,17 +378,17 @@ body.modal-open {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(110deg, rgba(27, 58, 92, 0.96), rgba(27, 58, 92, 0.8)),
+    linear-gradient(110deg, rgba(24, 28, 36, 0.92), rgba(32, 36, 44, 0.74)),
     radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.12), transparent 40%),
     radial-gradient(circle at 80% 20%, rgba(231, 76, 60, 0.2), transparent 35%),
-    url("./images/hero-bg-2-generated.png") center center / cover no-repeat;
-  background-color: #1b3a5c;
+    url("./images/hero-bg-2.jpg") center center / cover no-repeat;
+  background-color: #222830;
 }
 
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(27, 58, 92, 0.3);
+  background: rgba(18, 22, 30, 0.22);
 }
 
 .hero__content {
@@ -617,8 +659,26 @@ body.modal-open {
 }
 
 .cta {
-  background: var(--primary);
+  position: relative;
+  overflow: hidden;
+  background-color: #2c343d;
   color: #fff;
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(110deg, rgba(32, 38, 44, 0.58), rgba(28, 34, 40, 0.42)),
+    url("./images/hero-bg.jpg") center center / cover no-repeat;
+  pointer-events: none;
+}
+
+.cta .container {
+  position: relative;
+  z-index: 1;
 }
 
 .cta__inner {
@@ -758,6 +818,10 @@ body.modal-open {
   max-width: 75ch;
 }
 
+#privacy-policy {
+  scroll-margin-top: 100px;
+}
+
 .legal-doc__meta {
   margin: 0 0 1.25rem;
   font-size: 0.9rem;
@@ -867,6 +931,46 @@ body.modal-open {
   color: var(--text-primary);
 }
 
+.checkbox-field .field__error {
+  grid-column: 1 / -1;
+}
+
+.cta .checkbox-field {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;
+  width: 100%;
+}
+
+.cta .checkbox-field input[type="checkbox"] {
+  margin: 0;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.cta .checkbox-field label {
+  flex: 1;
+  min-width: 0;
+  display: block;
+  text-align: left;
+  line-height: 1.5;
+  color: #d8e4ef;
+}
+
+.cta .checkbox-field .field__error {
+  flex-basis: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.cta .checkbox-field a {
+  color: #fff;
+  text-decoration: underline;
+}
+
 .footer {
   background: var(--primary);
   color: #e4edf6;
@@ -886,9 +990,27 @@ body.modal-open {
 }
 
 .footer__brand {
-  margin: 0 0 10px;
-  color: #fff;
-  font-weight: 700;
+  display: inline-block;
+  margin: 0 0 14px;
+  line-height: 0;
+}
+
+.footer a.footer__brand {
+  margin-bottom: 14px;
+}
+
+.footer__brand:focus-visible {
+  outline: 2px solid #e4edf6;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.footer__logo {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: min(220px, 100%);
+  object-fit: contain;
 }
 
 .footer__title {
