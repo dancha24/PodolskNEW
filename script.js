@@ -161,12 +161,6 @@ function attachPhoneMask(input) {
 
   input.addEventListener("input", apply);
   input.addEventListener("blur", apply);
-  input.addEventListener("paste", (e) => {
-    e.preventDefault();
-    const pasted = e.clipboardData?.getData("text") ?? "";
-    input.value = formatRuPhoneDisplay(pasted);
-    input.dispatchEvent(new Event("input", { bubbles: true }));
-  });
 
   apply();
 }

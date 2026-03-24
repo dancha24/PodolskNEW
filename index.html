@@ -8,12 +8,6 @@
       name="description"
       content="Помогаем иностранным гражданам оформить РВП, ВНЖ и гражданство РФ в Подольске. Бесплатная консультация и сопровождение до результата."
     >
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    >
     <link rel="icon" href="./favicon-32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="./favicon.png" sizes="180x180">
     <link rel="preload" as="image" href="./images/hero-bg.jpg" fetchpriority="high">
@@ -113,17 +107,17 @@
           </p>
           <div class="services-grid">
             <article class="card reveal">
-              <img class="card__photo" src="./images/service-rvp.jpg" alt="Документы для оформления РВП" loading="lazy" decoding="async" width="1200" height="670">
+              <img class="card__photo" src="./images/service-rvp.jpg" alt="Документы для оформления РВП" loading="lazy" decoding="async" width="700" height="391">
               <h3>РВП</h3>
               <p>Подготовка документов, проверка пакета и сопровождение на подачу.</p>
             </article>
             <article class="card reveal">
-              <img class="card__photo" src="./images/service-vnzh.jpg" alt="Консультация по оформлению ВНЖ" loading="lazy" decoding="async" width="1200" height="670">
+              <img class="card__photo" src="./images/service-vnzh.jpg" alt="Консультация по оформлению ВНЖ" loading="lazy" decoding="async" width="700" height="391">
               <h3>ВНЖ</h3>
               <p>Оформление вида на жительство без ошибок и лишних визитов.</p>
             </article>
             <article class="card reveal">
-              <img class="card__photo" src="./images/service-citizenship.jpg" alt="Подготовка документов на гражданство РФ" loading="lazy" decoding="async" width="1200" height="670">
+              <img class="card__photo" src="./images/service-citizenship.jpg" alt="Подготовка документов на гражданство РФ" loading="lazy" decoding="async" width="700" height="391">
               <h3>Гражданство РФ</h3>
               <p>Сопровождение до результата с учетом вашей конкретной ситуации.</p>
             </article>
@@ -513,10 +507,14 @@
         })(window, document, "ct", "g7n9ttjo");
       }
 
+      function scheduleThirdPartyAnalytics() {
+        setTimeout(initThirdPartyAnalytics, 3500);
+      }
+
       if (document.readyState === "complete") {
-        setTimeout(initThirdPartyAnalytics, 1);
+        scheduleThirdPartyAnalytics();
       } else {
-        window.addEventListener("load", initThirdPartyAnalytics, { once: true });
+        window.addEventListener("load", scheduleThirdPartyAnalytics, { once: true });
       }
     </script>
     <noscript>
@@ -530,6 +528,6 @@
     </noscript>
     <!-- /Yandex.Metrika counter -->
 
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
   </body>
 </html>
