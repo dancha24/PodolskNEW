@@ -214,9 +214,9 @@
       </div>
     </div>
 
-    <!-- Yandex.Metrika + Calltouch (deferred until page load) -->
+    <!-- Yandex.Metrika + Calltouch -->
     <script>
-      function initThirdPartyAnalytics() {
+      function initYandexMetrika() {
         (function (m, e, t, r, i, k, a) {
           m[i] =
             m[i] ||
@@ -257,7 +257,9 @@
           accurateTrackBounce: true,
           trackLinks: true,
         });
+      }
 
+      function initCalltouch() {
         (function (w, d, n, c) {
           w.CalltouchDataObject = n;
           w[n] = function () {
@@ -293,15 +295,13 @@
         })(window, document, "ct", "g7n9ttjo");
       }
 
-      function scheduleThirdPartyAnalytics() {
-        setTimeout(initThirdPartyAnalytics, 3500);
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initCalltouch, { once: true });
+      } else {
+        initCalltouch();
       }
 
-      if (document.readyState === "complete") {
-        scheduleThirdPartyAnalytics();
-      } else {
-        window.addEventListener("load", scheduleThirdPartyAnalytics, { once: true });
-      }
+      initYandexMetrika();
     </script>
     <noscript>
       <div>
