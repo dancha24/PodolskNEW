@@ -16,6 +16,7 @@
     >
     <link rel="icon" href="./favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="./favicon.png">
+    <link rel="preload" as="image" href="./images/hero-bg.jpg" fetchpriority="high">
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
@@ -24,10 +25,11 @@
       <div class="container header__top">
         <a class="logo" href="#top" aria-label="На главную">
           <img class="logo__img" src="./images/logo.png" alt="Миграционный центр">
+          <span class="logo__text">Миграционный центр в Подольске</span>
         </a>
         <p class="header__address">г. Подольск, ул. Профсоюзная, 4</p>
         <p class="header__worktime">Пн-Пт 9:00-18:00</p>
-        <a class="header__phone" href="tel:+74950000000">+7&nbsp;(495)&nbsp;000&#8209;00&#8209;00</a>
+        <a class="header__phone" href="tel:+74999387040">+7&nbsp;(499)&nbsp;938&#8209;70&#8209;40</a>
         <button type="button" class="btn btn--primary header__cta js-open-consultation-modal">
           Записаться
         </button>
@@ -58,7 +60,7 @@
         </nav>
       </div>
       <div class="mobile-sticky-cta">
-        <a href="tel:+74950000000">Позвонить</a>
+        <a href="tel:+74999387040">Позвонить</a>
         <button type="button" class="js-open-consultation-modal">Записаться</button>
       </div>
     </header>
@@ -111,17 +113,17 @@
           </p>
           <div class="services-grid">
             <article class="card reveal">
-              <img class="card__photo" src="./images/service-rvp.jpg" alt="Документы для оформления РВП" loading="lazy">
+              <img class="card__photo" src="./images/service-rvp.jpg" alt="Документы для оформления РВП" loading="lazy" decoding="async" width="1200" height="670">
               <h3>РВП</h3>
               <p>Подготовка документов, проверка пакета и сопровождение на подачу.</p>
             </article>
             <article class="card reveal">
-              <img class="card__photo" src="./images/service-vnzh.jpg" alt="Консультация по оформлению ВНЖ" loading="lazy">
+              <img class="card__photo" src="./images/service-vnzh.jpg" alt="Консультация по оформлению ВНЖ" loading="lazy" decoding="async" width="1200" height="670">
               <h3>ВНЖ</h3>
               <p>Оформление вида на жительство без ошибок и лишних визитов.</p>
             </article>
             <article class="card reveal">
-              <img class="card__photo" src="./images/service-citizenship.jpg" alt="Подготовка документов на гражданство РФ" loading="lazy">
+              <img class="card__photo" src="./images/service-citizenship.jpg" alt="Подготовка документов на гражданство РФ" loading="lazy" decoding="async" width="1200" height="670">
               <h3>Гражданство РФ</h3>
               <p>Сопровождение до результата с учетом вашей конкретной ситуации.</p>
             </article>
@@ -205,7 +207,7 @@
               <div class="price-row"><span>Копия (1 стр.)</span><strong>30 ₽</strong></div>
             </div>
           </div>
-          <p class="reveal">Не нашли свою услугу? Позвоните нам: <a href="tel:+74950000000">+7&nbsp;(495)&nbsp;000&#8209;00&#8209;00</a> или <a href="#lead-form">запишитесь на консультацию</a>.</p>
+          <p class="reveal">Не нашли свою услугу? Позвоните нам: <a href="tel:+74999387040">+7&nbsp;(499)&nbsp;938&#8209;70&#8209;40</a> или <a href="#lead-form">запишитесь на консультацию</a>.</p>
         </div>
       </section>
 
@@ -328,7 +330,7 @@
           <div class="contacts__info reveal">
             <h2 class="section__title">Как нас найти</h2>
             <p><strong>Адрес:</strong> г. Подольск, ул. Профсоюзная, д. 4</p>
-            <p><strong>Телефон:</strong> <a href="tel:+74950000000">+7&nbsp;(495)&nbsp;000&#8209;00&#8209;00</a></p>
+            <p><strong>Телефон:</strong> <a href="tel:+74999387040">+7&nbsp;(499)&nbsp;938&#8209;70&#8209;40</a></p>
             <p><strong>Режим работы:</strong> Пн-Пт 9:00-18:00</p>
             <p>
               Удобно добраться на общественном транспорте и на машине. Рядом есть парковка.
@@ -358,8 +360,9 @@
         <div>
           <a class="footer__brand" href="#top" aria-label="На главную">
             <img class="footer__logo" src="./images/logo-w.png" alt="Миграционный центр в Подольске" loading="lazy">
+            <span class="footer__brand-text">Миграционный центр в Подольске</span>
           </a>
-          <p>+7&nbsp;(495)&nbsp;000&#8209;00&#8209;00</p>
+          <p>+7&nbsp;(499)&nbsp;938&#8209;70&#8209;40</p>
           <p>г. Подольск, ул. Профсоюзная, 4</p>
           <p>Пн-Пт: 9:00-18:00</p>
         </div>
@@ -453,6 +456,17 @@
       })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=108195351", "ym");
 
       ym(108195351, "init", {
+        ssr: true,
+        webvisor: true,
+        clickmap: true,
+        ecommerce: "dataLayer",
+        referrer: document.referrer,
+        url: location.href,
+        accurateTrackBounce: true,
+        trackLinks: true,
+      });
+
+      ym(105911139, "init", {
         ssr: true,
         webvisor: true,
         clickmap: true,

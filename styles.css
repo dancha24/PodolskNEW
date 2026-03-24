@@ -170,7 +170,10 @@ iframe {
 }
 
 .logo__text {
-  font-size: 0.95rem;
+  color: #111;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.1;
 }
 
 .header__address,
@@ -974,7 +977,8 @@ body.modal-open {
 .footer {
   background: var(--primary);
   color: #e4edf6;
-  padding: 40px 0 24px;
+  padding: 40px 0 92px;
+  text-align: center;
 }
 
 .footer a {
@@ -987,12 +991,16 @@ body.modal-open {
 .footer__grid {
   display: grid;
   gap: 20px;
+  justify-items: center;
 }
 
 .footer__brand {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   margin: 0 0 14px;
-  line-height: 0;
+  line-height: 1.1;
 }
 
 .footer a.footer__brand {
@@ -1009,8 +1017,14 @@ body.modal-open {
   display: block;
   height: 40px;
   width: auto;
-  max-width: min(220px, 100%);
+  max-width: 100%;
   object-fit: contain;
+}
+
+.footer__brand-text {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
 }
 
 .footer__title {
@@ -1024,6 +1038,7 @@ body.modal-open {
   padding-top: 14px;
   border-top: 1px solid #456384;
   font-size: 0.95rem;
+  text-align: center;
 }
 
 .visually-hidden {
@@ -1057,6 +1072,23 @@ body.modal-open {
     padding: 80px 0;
   }
 
+  .footer {
+    padding: 40px 0 24px;
+    text-align: left;
+  }
+
+  .footer__grid {
+    justify-items: stretch;
+  }
+
+  .footer__brand {
+    justify-content: flex-start;
+  }
+
+  .footer__copy {
+    text-align: left;
+  }
+
   .header__top {
     grid-template-columns: auto 1fr auto auto auto;
     gap: 12px 18px;
@@ -1077,6 +1109,10 @@ body.modal-open {
     color: var(--text-secondary);
     font-size: 0.9rem;
     margin: 0;
+  }
+
+  .logo__text {
+    font-size: 1.4rem;
   }
 
   .header__phone {
@@ -1167,6 +1203,33 @@ body.modal-open {
 
   .footer__grid {
     grid-template-columns: 1.4fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .header__top {
+    grid-template-columns: auto 1fr auto;
+    gap: 10px 14px;
+  }
+
+  .logo__text {
+    font-size: 1.15rem;
+  }
+
+  .header__address {
+    max-width: 220px;
+    font-size: 0.84rem;
+    line-height: 1.2;
+  }
+
+  .header__worktime,
+  .header__cta {
+    display: none;
+  }
+
+  .header__phone {
+    white-space: nowrap;
+    font-size: 1.05rem;
   }
 }
 
