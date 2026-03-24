@@ -169,6 +169,11 @@ document.querySelectorAll('input[name="phone"][type="tel"]').forEach(attachPhone
 
 const BITRIX_WEBHOOK_BASE = "https://b24-zvxg8i.bitrix24.ru/rest/11/lg90h0cxox4duhl0";
 const BITRIX_LEAD_ENDPOINT = `${BITRIX_WEBHOOK_BASE}/crm.lead.add.json`;
+const BITRIX_ASSIGNED_BY_ID = 11;
+const BITRIX_SOURCE_ID = "27"; // "Сайт  emcmpodolsk.ru"
+const BITRIX_SITE_ENUM_PRIMARY = 1745; // UF_CRM_1738574737291 => emcmpodolsk.ru
+const BITRIX_SITE_ENUM_REPORTS = 1751; // UF_CRM_1718319812 => emcmpodolsk.ru
+const BITRIX_CALLTOUCH_SITE_ID = "74136";
 
 function getFormType(form) {
   if (form.closest("#consultation-modal")) return "Модальное окно";
@@ -186,7 +191,7 @@ function getSelectValueLabel(select) {
 
 function getUtmParams() {
   const params = new URLSearchParams(window.location.search);
-  const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+  const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "utm_id"];
   const utm = {};
 
   keys.forEach((key) => {
@@ -195,6 +200,12 @@ function getUtmParams() {
   });
 
   return utm;
+}
+
+function getUtmText(utm) {
+  return Object.entries(utm)
+    .map(([key, value]) => `${key}=${value}`)
+    .join(", ");
 }
 
 function buildLeadPayload(form) {
@@ -215,6 +226,8 @@ function buildLeadPayload(form) {
   const pageUrl = window.location.href;
   const pagePath = window.location.pathname;
   const utm = getUtmParams();
+  const utmText = getUtmText(utm);
+  const cookiesValue = document.cookie || "";
 
   const commentsParts = [
     `Форма: ${formType}`,
@@ -225,13 +238,7 @@ function buildLeadPayload(form) {
   if (serviceLabel) commentsParts.push(`Услуга: ${serviceLabel}`);
   if (message) commentsParts.push(`Сообщение: ${message}`);
   if (comment) commentsParts.push(`Комментарий: ${comment}`);
-  if (Object.keys(utm).length) {
-    commentsParts.push(
-      `UTM: ${Object.entries(utm)
-        .map(([key, value]) => `${key}=${value}`)
-        .join(", ")}`
-    );
-  }
+  if (utmText) commentsParts.push(`UTM: ${utmText}`);
 
   return {
     fields: {
@@ -239,12 +246,19 @@ function buildLeadPayload(form) {
       NAME: name,
       PHONE: [{ VALUE: displayPhone || rawPhone, VALUE_TYPE: "WORK" }],
       COMMENTS: commentsParts.join("\n"),
-      SOURCE_ID: "WEB",
-      SOURCE_DESCRIPTION: Object.keys(utm).length
-        ? Object.entries(utm)
-            .map(([key, value]) => `${key}=${value}`)
-            .join("; ")
-        : `Форма: ${formType}`,
+      ASSIGNED_BY_ID: BITRIX_ASSIGNED_BY_ID,
+      SOURCE_ID: BITRIX_SOURCE_ID,
+      SOURCE_DESCRIPTION: "Сайт  emcmpodolsk.ru",
+      UTM_SOURCE: utm.utm_source || "",
+      UTM_MEDIUM: utm.utm_medium || "",
+      UTM_CAMPAIGN: utm.utm_campaign || "",
+      UTM_CONTENT: utm.utm_content || "",
+      UTM_TERM: utm.utm_term || "",
+      UF_CRM_UTMID: utm.utm_id || "",
+      UF_CRM_COOKIES: cookiesValue,
+      UF_CRM_CALLTOUCHGZGO: BITRIX_CALLTOUCH_SITE_ID,
+      UF_CRM_1738574737291: BITRIX_SITE_ENUM_PRIMARY,
+      UF_CRM_1718319812: BITRIX_SITE_ENUM_REPORTS,
       OPENED: "Y",
     },
     params: {
