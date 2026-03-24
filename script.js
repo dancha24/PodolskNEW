@@ -173,6 +173,117 @@ function attachPhoneMask(input) {
 
 document.querySelectorAll('input[name="phone"][type="tel"]').forEach(attachPhoneMask);
 
+const BITRIX_WEBHOOK_BASE = "https://b24-zvxg8i.bitrix24.ru/rest/11/lg90h0cxox4duhl0";
+const BITRIX_LEAD_ENDPOINT = `${BITRIX_WEBHOOK_BASE}/crm.lead.add.json`;
+
+function getFormType(form) {
+  if (form.closest("#consultation-modal")) return "Модальное окно";
+  if (form.closest(".cta")) return "CTA блок";
+  if (window.location.pathname.includes("/zapis/")) return "Предварительная запись";
+  if (window.location.pathname.includes("/contacts/")) return "Контакты";
+  return "Главная форма";
+}
+
+function getSelectValueLabel(select) {
+  if (!select) return "";
+  const selectedOption = select.options[select.selectedIndex];
+  return selectedOption?.textContent?.trim() || select.value || "";
+}
+
+function getUtmParams() {
+  const params = new URLSearchParams(window.location.search);
+  const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+  const utm = {};
+
+  keys.forEach((key) => {
+    const value = params.get(key);
+    if (value) utm[key] = value.trim();
+  });
+
+  return utm;
+}
+
+function buildLeadPayload(form) {
+  const nameInput = form.querySelector('[name="name"]');
+  const phoneInput = form.querySelector('[name="phone"]');
+  const serviceSelect = form.querySelector('[name="service"]');
+  const messageInput = form.querySelector('[name="message"]');
+  const commentInput = form.querySelector('[name="comment"]');
+
+  const name = nameInput?.value?.trim() || "Без имени";
+  const rawPhone = phoneInput?.value || "";
+  const normalizedPhone = normalizePhoneDigits(rawPhone);
+  const displayPhone = formatRuPhoneDisplay(normalizedPhone);
+  const serviceLabel = getSelectValueLabel(serviceSelect);
+  const message = messageInput?.value?.trim() || "";
+  const comment = commentInput?.value?.trim() || "";
+  const formType = getFormType(form);
+  const pageUrl = window.location.href;
+  const pagePath = window.location.pathname;
+  const utm = getUtmParams();
+
+  const commentsParts = [
+    `Форма: ${formType}`,
+    `Страница: ${pagePath}`,
+    `URL: ${pageUrl}`,
+  ];
+
+  if (serviceLabel) commentsParts.push(`Услуга: ${serviceLabel}`);
+  if (message) commentsParts.push(`Сообщение: ${message}`);
+  if (comment) commentsParts.push(`Комментарий: ${comment}`);
+  if (Object.keys(utm).length) {
+    commentsParts.push(
+      `UTM: ${Object.entries(utm)
+        .map(([key, value]) => `${key}=${value}`)
+        .join(", ")}`
+    );
+  }
+
+  return {
+    fields: {
+      TITLE: `Заявка с сайта (${formType})`,
+      NAME: name,
+      PHONE: [{ VALUE: displayPhone || rawPhone, VALUE_TYPE: "WORK" }],
+      COMMENTS: commentsParts.join("\n"),
+      SOURCE_ID: "WEB",
+      SOURCE_DESCRIPTION: Object.keys(utm).length
+        ? Object.entries(utm)
+            .map(([key, value]) => `${key}=${value}`)
+            .join("; ")
+        : `Форма: ${formType}`,
+      OPENED: "Y",
+    },
+    params: {
+      REGISTER_SONET_EVENT: "Y",
+    },
+  };
+}
+
+async function sendLeadToBitrix(form) {
+  const payload = buildLeadPayload(form);
+  const response = await fetch(BITRIX_LEAD_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  let result = null;
+  try {
+    result = await response.json();
+  } catch (_) {
+    throw new Error("Некорректный ответ от Bitrix24");
+  }
+
+  if (!response.ok || result?.error) {
+    const errorMessage = result?.error_description || result?.error || "Ошибка отправки в Bitrix24";
+    throw new Error(errorMessage);
+  }
+
+  return result;
+}
+
 const validators = {
   name(value) {
     if (!value.trim()) return "Введите имя";
@@ -233,7 +344,7 @@ function validateField(input) {
 }
 
 document.querySelectorAll(".js-lead-form").forEach((form) => {
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     let hasErrors = false;
@@ -248,6 +359,7 @@ document.querySelectorAll(".js-lead-form").forEach((form) => {
 
     const submitButton = form.querySelector('button[type="submit"]');
     const success = form.querySelector(".lead-form__success");
+    const phoneField = form.querySelector('[name="phone"]');
 
     if (submitButton) {
       submitButton.disabled = true;
@@ -255,25 +367,39 @@ document.querySelectorAll(".js-lead-form").forEach((form) => {
       submitButton.style.cursor = "not-allowed";
     }
 
-    if (success) {
-      success.hidden = false;
-    }
+    setFieldError(phoneField, "");
 
-    fields.forEach((field) => {
-      if (field.type === "checkbox") {
-        field.checked = false;
-      } else {
-        field.value = "";
-        field.style.borderColor = "";
+    try {
+      await sendLeadToBitrix(form);
+
+      if (success) {
+        success.textContent = "Спасибо! Мы перезвоним в течение 15 минут.";
+        success.style.color = "#27ae60";
+        success.hidden = false;
       }
-    });
 
-    setTimeout(() => {
+      fields.forEach((field) => {
+        if (field.type === "checkbox") {
+          field.checked = false;
+        } else {
+          field.value = "";
+          field.style.borderColor = "";
+        }
+      });
+    } catch (error) {
+      if (success) {
+        success.textContent = "Не удалось отправить заявку. Проверьте интернет и попробуйте снова.";
+        success.style.color = "#d63031";
+        success.hidden = false;
+      }
+      setFieldError(phoneField, "Ошибка отправки. Попробуйте еще раз.");
+      console.error("Bitrix24 lead send error:", error);
+    } finally {
       if (submitButton) {
         submitButton.disabled = false;
         submitButton.style.opacity = "";
         submitButton.style.cursor = "";
       }
-    }, 30000);
+    }
   });
 });
