@@ -169,7 +169,7 @@ document.querySelectorAll('input[name="phone"][type="tel"]').forEach(attachPhone
 
 const BITRIX_WEBHOOK_BASE = "https://b24-zvxg8i.bitrix24.ru/rest/11/lg90h0cxox4duhl0";
 const BITRIX_LEAD_ENDPOINT = `${BITRIX_WEBHOOK_BASE}/crm.lead.add.json`;
-const BITRIX_ASSIGNED_BY_ID = 11;
+const BITRIX_ASSIGNED_BY_ID = 217;
 const BITRIX_SOURCE_ID = "27"; // "Сайт  emcmpodolsk.ru"
 const BITRIX_SITE_ENUM_PRIMARY = 1745; // UF_CRM_1738574737291 => emcmpodolsk.ru
 const BITRIX_SITE_ENUM_REPORTS = 1751; // UF_CRM_1718319812 => emcmpodolsk.ru
