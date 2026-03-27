@@ -292,6 +292,14 @@ async function sendLeadToBitrix(form) {
   return result;
 }
 
+const YM_COUNTER_ID = 105911139;
+
+function reachUniversalFormGoal(form) {
+  if (typeof window.ym !== "function") return;
+  const formType = getFormType(form);
+  window.ym(YM_COUNTER_ID, "reachGoal", "universal_form_submit", { form: formType });
+}
+
 const validators = {
   name(value) {
     if (!value.trim()) return "Введите имя";
@@ -379,6 +387,7 @@ document.querySelectorAll(".js-lead-form").forEach((form) => {
 
     try {
       await sendLeadToBitrix(form);
+      reachUniversalFormGoal(form);
 
       if (success) {
         success.textContent = "Спасибо! Мы перезвоним в течение 15 минут.";
