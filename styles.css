@@ -880,6 +880,10 @@ body.modal-open {
   background: #fff;
 }
 
+.contact-form-card__title {
+  text-align: center;
+}
+
 .contact-info--stack {
   margin-top: 16px;
 }
