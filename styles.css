@@ -552,9 +552,12 @@ body.modal-open {
   background: #eef3f9;
 }
 
-.services-extra {
-  margin: 20px 0;
-  color: var(--text-secondary);
+#services .btn.js-open-consultation-modal {
+  display: flex;
+  margin-top: 20px;
+  margin-inline: auto;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .timeline {
